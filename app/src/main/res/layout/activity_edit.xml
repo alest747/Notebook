@@ -55,27 +55,27 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:alpha="0.6"
+        android:alpha="0.8"
         android:clickable="true"
         android:onClick="onClickSafe"
         app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="@+id/edtDiskrip"
         app:layout_constraintEnd_toEndOf="@+id/edtDiskrip"
-        app:srcCompat="@drawable/download_title" />
+        app:srcCompat="@drawable/sava_image" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonAddImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:alpha="0.6"
+        android:alpha="0.8"
         android:background="@color/green"
         android:clickable="true"
         android:onClick="onClickAddImage"
         app:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
-        app:srcCompat="@drawable/add_image" />
+        app:srcCompat="@drawable/select_image" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/myImageLayout"
@@ -108,25 +108,27 @@
 
         <ImageButton
             android:id="@+id/imageButtonRedact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:alpha="0.6"
             android:onClick="onClickRedactImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/delete_m" />
 
         <ImageButton
             android:id="@+id/imageButtonDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:alpha="0.6"
             android:onClick="onClickDeleteImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            app:srcCompat="@drawable/delete_my" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

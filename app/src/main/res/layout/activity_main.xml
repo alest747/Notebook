@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEnter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
         app:navGraph="@navigation/main_nav" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/button"
+        android:id="@+id/buttonEnter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,8 +30,9 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:onClick="onClickActivityRec"
-        android:text="Enter to Notebook"
+        android:text="@string/button_enter"
         android:textColor="@color/grey4"
+        android:visibility="gone"
         app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -33,7 +33,7 @@ class FragmentMain : Fragment() {
         val buttonReg = view.findViewById<Button>(R.id.buttonFragReg)
         val controller = findNavController()
 
-        dataFragModel.message.observe(viewLifecycleOwner, {  //принимаем значение из другого брагмента через класс через прослушиватель viewLifecycleOwner, где it принимаемое значение
+        dataFragModel.message.observe(viewLifecycleOwner, {  //принимаем значение из другого фрагмента через класс через прослушиватель viewLifecycleOwner, где it принимаемое значение
                 binding.tvName.text = it
             if(binding.tvName.text != "") binding.buttonFragReg.visibility = View.GONE
         })
