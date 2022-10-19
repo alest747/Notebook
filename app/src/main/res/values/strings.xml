@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notebook</string>
+    <string name="toast_error">Title or description are empty!</string>
+    <string name="toast_saved">Saved</string>
+    <string name="empty_base">Empty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
