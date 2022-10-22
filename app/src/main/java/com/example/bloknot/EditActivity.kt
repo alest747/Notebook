@@ -11,6 +11,9 @@ import com.example.bloknot.db.MyDbManager
 import com.example.bloknot.db.MyIntentConstants
 
 class EditActivity : AppCompatActivity() {
+
+    var id = 0  //переменная для опеределения id из списка при редактировании
+    var isEditState = false  //переменная булиан для отслеживаня создания новой заметки в блокноте или для редактирования существующей
     val imageRequestCode = 10  //переменная с кодом запроса равная 10
     var tempImageUri = "empty"  //переменная со значением картинки
     lateinit var binding:ActivityEditBinding  //петеменная для биндинга
@@ -67,14 +70,16 @@ class EditActivity : AppCompatActivity() {
         val edTitle = binding.edtTitle.text.toString()  //переменные с текстами в виде стритг
         val edDesc= binding.edtDiskrip.text.toString()
 
-        if(edTitle == "" || edDesc == ""){  //если одно их полей пустое
-            Toast.makeText(this,R.string.toast_error , Toast.LENGTH_SHORT).show()  //всплывающее сообщение - ошибка
-        }else{  //иначе
-            myDbManager.insertToDb(edTitle, edDesc, tempImageUri)  //записываем данные в нашу бд
-            Toast.makeText(this,R.string.toast_saved , Toast.LENGTH_SHORT).show()  //всплыв сообщение о сохранении
-            finish()  //закрываем активити
-            myDbManager.closeDb()  //закрываем базу данных
-        }
+        if(edTitle != "" && edDesc != ""){  //если одно их полей пустое
+            if(isEditState){  //если получили интенты, то запускаем редактирование
+                myDbManager.updateItemDb(edTitle, edDesc, tempImageUri, id)  //обновляем данные в базе данных по id
+            }else{
+                myDbManager.insertToDb(edTitle, edDesc, tempImageUri)  //иначе добавляем данные в бд
+            }
+            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()  // уведомление при редактировании или добавлении данных
+            finish()
+        }else{Toast.makeText(this, "Title or Description are empty!", Toast.LENGTH_SHORT).show()}  //всплывающее уведомление при пустых полях
+
     }
 
     fun getMyIntents(){  //функция принятия данных из нажатия на элемент рецикла
@@ -84,9 +89,16 @@ class EditActivity : AppCompatActivity() {
 
             if(i.getStringExtra(MyIntentConstants.I_TITLE_KEY) != null){  //принимаем значение по ключевому слову и если оно не равно null
 
+
+
                 binding.floatingActionButtonAddImage.visibility = View.GONE  //прячем кнопку добавления картинки
                 binding.edtTitle.setText(i.getStringExtra(MyIntentConstants.I_TITLE_KEY))  //передаем информацию на наши EdText
+
+                isEditState = true //записываем в переменну для отслеживания редактирования значение тру при получении интентов
+
                 binding.edtDiskrip.setText(i.getStringExtra(MyIntentConstants.I_DESC_KEY))
+
+                id = i.getIntExtra(MyIntentConstants.I_ID_KEY, 0)  //назначаем нашей переменной для обновления базы данных значение id поля редактирования
 
                 if(i.getStringExtra(MyIntentConstants.I_URI_KEY) != "empty"){  //проверяем наличие картинки
 

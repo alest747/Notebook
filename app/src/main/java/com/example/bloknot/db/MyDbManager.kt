@@ -18,11 +18,23 @@ class MyDbManager(val context: Context) {
 
     fun insertToDb(title:String, content:String, uri:String){  //функция добавления данных в базу данных
         val values = ContentValues().apply {
+
             put(myDbClass.COLUMN_NAME_TITLE, title)  //  ложим наши данные в бд
             put(myDbClass.COLUMN_NAME_CONTENT, content)
             put(myDbClass.COLUMN_NAME_IMAGE_URI, uri)
         }
         db?.insert(myDbClass.TABLE_NAME,null, values)  //добавление данных в бд
+    }
+
+    fun updateItemDb(title:String, content:String, uri:String, id:Int){  //функция обновления данных в базу данных
+        val selection = BaseColumns._ID + "=$id"  //переменная равная колонам нашей бд по id
+        val values = ContentValues().apply {
+
+            put(myDbClass.COLUMN_NAME_TITLE, title)  //  ложим наши данные в бд
+            put(myDbClass.COLUMN_NAME_CONTENT, content)
+            put(myDbClass.COLUMN_NAME_IMAGE_URI, uri)
+        }
+        db?.update(myDbClass.TABLE_NAME, values, selection, null)  //обновляем данные в бд
     }
 
     fun removeItemFromDb(id:String){  //функция удаления данных из базы данных

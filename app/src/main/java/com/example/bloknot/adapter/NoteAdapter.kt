@@ -32,6 +32,7 @@ class NoteAdapter(listNote:ArrayList<ListItem>, contextA:Context):RecyclerView.A
                     putExtra(MyIntentConstants.I_TITLE_KEY, item.title)  //помещаем данные из базы данных через константы в интент
                     putExtra(MyIntentConstants.I_DESC_KEY, item.desc)
                     putExtra(MyIntentConstants.I_URI_KEY, item.uri)
+                    putExtra(MyIntentConstants.I_ID_KEY, item.id)  //передаем идентификатор
                 }
                 context.startActivity(intent)  //открываем новое активити
 
