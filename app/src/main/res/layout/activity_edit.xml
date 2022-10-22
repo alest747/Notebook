@@ -26,6 +26,7 @@
         android:hint="Title"
         android:inputType="textPersonName"
         android:padding="10dp"
+        android:textColor="@color/edit_text_color_state"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myImageLayout" />
@@ -44,10 +45,13 @@
         android:hint="Description"
         android:inputType="textMultiLine|textPersonName"
         android:padding="10dp"
+        android:textColor="@color/edit_text_color_state"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTitle"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -130,5 +134,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/delete_my" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="onClickEditText"
+        app:backgroundTint="@color/green"
+        app:layout_constraintBottom_toBottomOf="@+id/edtDiskrip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/im_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

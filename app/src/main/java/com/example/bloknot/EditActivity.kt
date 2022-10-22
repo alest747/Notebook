@@ -9,6 +9,8 @@ import android.widget.Toast
 import com.example.bloknot.databinding.ActivityEditBinding
 import com.example.bloknot.db.MyDbManager
 import com.example.bloknot.db.MyIntentConstants
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditActivity : AppCompatActivity() {
 
@@ -76,13 +78,25 @@ class EditActivity : AppCompatActivity() {
             }else{
                 myDbManager.insertToDb(edTitle, edDesc, tempImageUri)  //иначе добавляем данные в бд
             }
-            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()  // уведомление при редактировании или добавлении данных
+            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()  // уведомление о сохранении текста
             finish()
         }else{Toast.makeText(this, "Title or Description are empty!", Toast.LENGTH_SHORT).show()}  //всплывающее уведомление при пустых полях
 
     }
 
+    fun onClickEditText(view: View){  //функция кнопки редактирования текста
+        binding.edtTitle.isEnabled = true  //разблокируем наш текст в полях заголовка и описания для редактирования
+        binding.edtDiskrip.isEnabled = true
+        binding.floatingActionButtonEditText.visibility = View.GONE  //скрываем кнопку редактирования
+        binding.imageButtonRedact.visibility = View.VISIBLE  //показываем кнопку редактирования картинки
+        binding.imageButtonDelete.visibility = View.VISIBLE  //показываем кнопку закрытия редактирования
+        if(tempImageUri == "empty") binding.floatingActionButtonAddImage.visibility = View.VISIBLE  // показываем кнопку добавления картинки
+
+    }
+
     fun getMyIntents(){  //функция принятия данных из нажатия на элемент рецикла
+        binding.floatingActionButtonEditText.visibility = View.INVISIBLE
+
         val i = intent  //переменная равноая интенту
 
         if(i != null){  //если она не равна нулю
@@ -95,6 +109,9 @@ class EditActivity : AppCompatActivity() {
                 binding.edtTitle.setText(i.getStringExtra(MyIntentConstants.I_TITLE_KEY))  //передаем информацию на наши EdText
 
                 isEditState = true //записываем в переменну для отслеживания редактирования значение тру при получении интентов
+                binding.edtTitle.isEnabled = false  //блокируем наш текст в полях заголовка и описания
+                binding.edtDiskrip.isEnabled = false
+                binding.floatingActionButtonEditText.visibility = View.VISIBLE
 
                 binding.edtDiskrip.setText(i.getStringExtra(MyIntentConstants.I_DESC_KEY))
 
@@ -103,12 +120,18 @@ class EditActivity : AppCompatActivity() {
                 if(i.getStringExtra(MyIntentConstants.I_URI_KEY) != "empty"){  //проверяем наличие картинки
 
                     binding.myImageLayout.visibility = View.VISIBLE
+                    tempImageUri = i.getStringExtra(MyIntentConstants.I_URI_KEY)!!  //ссылка на установленную картинку
+                    binding.imEdActiv.setImageURI(Uri.parse(tempImageUri))  //устанавливаем картинку по нашему uri
                     binding.imageButtonDelete.visibility = View.GONE
                     binding.imageButtonRedact.visibility = View.GONE
-                    binding.imEdActiv.setImageURI(Uri.parse(i.getStringExtra(MyIntentConstants.I_URI_KEY)))  //устанавливаем картинку по нашему uri
+
 
                 }
             }
         }
+    }
+    private fun getCurrentTime():String{  //функция получения времени из календаря
+        val time = Calendar.getInstance().time  //переменная с получение времени
+        return time.toString()  //возпращаем переменную в типе стринг
     }
 }
