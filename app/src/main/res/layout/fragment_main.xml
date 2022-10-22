@@ -11,10 +11,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:id="@+id/imageViewFrafMain"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
             android:src="@drawable/images_note"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,15 +24,15 @@
             android:id="@+id/Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="casual"
             android:text="Notebook from:"
             android:textColor="@color/grey2"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintEnd_toEndOf="@+id/imageViewFrafMain"
+            app:layout_constraintStart_toStartOf="@+id/imageViewFrafMain"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewFrafMain" />
 
         <TextView
             android:id="@+id/tvName"
@@ -52,7 +52,7 @@
             android:id="@+id/buttonFragReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="  enter name"

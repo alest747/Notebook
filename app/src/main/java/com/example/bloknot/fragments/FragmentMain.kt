@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.bloknot.MainActivity
 import com.example.bloknot.R
 import com.example.bloknot.databinding.FragmentMainBinding
+import com.squareup.picasso.Picasso
 
 class FragmentMain : Fragment() {
 
@@ -32,6 +33,9 @@ class FragmentMain : Fragment() {
 
         val buttonReg = view.findViewById<Button>(R.id.buttonFragReg)
         val controller = findNavController()
+        val imageUrl = "https://downloader.disk.yandex.ru/preview/353e2ecde9315ddf4c6fa821d2c78d90a4d204cd617e657b580433cdeb42cf47/6353fe81/tP46TFixCVFUFs_ptYImI4R4oup6S_cILJHwDRbjiiu4XKKQI4oq9C2tLCJm_G5g-pPUgKmPxHx_jC7m6T6zmg%3D%3D?uid=0&filename=images_noteRebild3.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048" //загружаем картинку с помощью пикассо и интернета
+        Picasso.get().load(imageUrl).into(binding.imageViewFrafMain)
+
 
         dataFragModel.message.observe(viewLifecycleOwner, {  //принимаем значение из другого фрагмента через класс через прослушиватель viewLifecycleOwner, где it принимаемое значение
                 binding.tvName.text = it
